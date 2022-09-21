@@ -11,7 +11,7 @@ class Bird {
     public static $egg_num = 0;
 
     public static function can_fly() {
-      $flying_string = static::$flying == "yes" ? "can fly" : static::$flying . " is stuck on the ground";
+      $flying_string = static::$flying == "yes" ? "can fly" : " is stuck on the ground";
       return $flying_string;
     }
 
