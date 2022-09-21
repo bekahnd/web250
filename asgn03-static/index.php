@@ -18,10 +18,17 @@
     echo '<p>The song of the ' . $fly_catcher->name . ' on breeding grounds is "' . $fly_catcher->song . '".</p>';
 
     $kiwi = new Kiwi;
-    $kiwi->flying = "no";
+    //$kiwi->flying = "no";
     echo "<p>The " . $fly_catcher->name . " " . $fly_catcher->can_fly() . ".</p>";
     echo "<p>The " . $kiwi->name . " " . $kiwi->can_fly() . ".</p>";    
 
+    echo 'Bird count: ' . Bird::$instance_count . '<br>';
+
+    $bird2 = Bird::create();
+    $fly_catcher2 = YellowBelliedFlyCatcher::create();
+    $kiwi2 = Kiwi::create();
+
+    echo 'Bird count: ' . Bird::$instance_count . '<br>';
 ?>
     </body>
 </html>
