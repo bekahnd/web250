@@ -9,7 +9,7 @@
 <h1>Inheritance Examples</h1>
 
 <?php 
-    include 'Bird.php';
+    include 'bird.php';
     
     $bird = new Bird;
     echo '<p>The generic song of any bird is "' . $bird->song . '".</p>';
