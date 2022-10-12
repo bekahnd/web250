@@ -19,12 +19,15 @@
         <th>Behavior</th>
         <th>Conservation Level</th>
         <th>Backyard Tips</th>
+        <th>&nbsp;</th>
       </tr>
 
 
 <?php
-$parser = new ParseCSV(PRIVATE_PATH . '/wnc-birds.csv');
-$bird_array = $parser->parse();
+
+$birds = Bird::find_all();
+// $parser = new ParseCSV(PRIVATE_PATH . '/wnc-birds.csv');
+// $bird_array = $parser->parse();
 // echo '<pre>';
 // print_r($bird_array);
 // echo '</pre>';
@@ -33,16 +36,17 @@ $bird_array = $parser->parse();
 
 
 
-      <?php foreach($bird_array as $args) { ?>
-     <?php  $bird = new Bird($args);   ?>
+      <?php foreach($birds as $bird) { ?>
+    <?php // $bird = new Bird($args);   ?>
       <tr>
         <td><?php echo $bird->common_name; ?></td>
         <td><?= $bird->habitat; ?></td>
         <td><?= $bird->food; ?></td>
-        <td><?= $bird->nest_palcement; ?></td>
+        <td><?= $bird->nest_placement; ?></td>
         <td><?= $bird->behavior; ?></td>
         <td><?php echo $bird->conservation(); ?></td>
         <td><?= $bird->backyard_tips; ?></td>
+        <td><a href="detail.php?id=<?php echo $bird->id; ?>">View</a></td>
       </tr>
 <?php } ?>
     </table>
@@ -51,10 +55,10 @@ $bird_array = $parser->parse();
 
       // This code is from the PDO tutorial from asgn05
 
-      $stmt = $database->query("SELECT * FROM birds");
-      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        echo 'Name: ' . $row['common_name'] . '<br>';
-      }
+      // $stmt = $database->query("SELECT * FROM birds");
+      // while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+      //   echo 'Name: ' . $row['common_name'] . '<br>';
+      // }
     ?>
   </div>
 
