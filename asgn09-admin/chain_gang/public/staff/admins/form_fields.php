@@ -35,3 +35,8 @@ if(!isset($admin)) {
   <dt>Confirm Password</dt>
   <dd><input type="password" name="admin[confirm_password]" value="" /></dd>
 </dl>
+
+<dl>
+  <dt>User Level</dt>
+  <dd><input type="char" name="admin[user_level]" value=""></dd>
+</dl>
