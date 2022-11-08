@@ -33,33 +33,21 @@ $birds = Bird::find_all();
 // echo '</pre>';
 //exit();
 ?>
-
-
-
       <?php foreach($birds as $bird) { ?>
-    <?php // $bird = new Bird($args);   ?>
       <tr>
-        <td><?php echo $bird->common_name; ?></td>
-        <td><?= $bird->habitat; ?></td>
-        <td><?= $bird->food; ?></td>
-        <td><?= $bird->nest_placement; ?></td>
-        <td><?= $bird->behavior; ?></td>
-        <td><?php echo $bird->conservation(); ?></td>
-        <td><?= $bird->backyard_tips; ?></td>
+        <td><?php echo h($bird->common_name); ?></td>
+        <td><?php echo h($bird->habitat); ?></td>
+        <td><?php echo h($bird->food); ?></td>
+        <td><?php echo h($bird->nest_placement); ?></td>
+        <td><?php echo h($bird->behavior); ?></td>
+        <td><?php echo h($bird->conservation()); ?></td>
+        <td><?php echo h($bird->backyard_tips); ?></td>
         <td><a href="detail.php?id=<?php echo $bird->id; ?>">View</a></td>
       </tr>
 <?php } ?>
+
     </table>
 
-    <?php
-
-      // This code is from the PDO tutorial from asgn05
-
-      // $stmt = $database->query("SELECT * FROM birds");
-      // while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-      //   echo 'Name: ' . $row['common_name'] . '<br>';
-      // }
-    ?>
   </div>
 
 </div>

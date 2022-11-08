@@ -1,31 +1,25 @@
-<?php require_once('../private/initialize.php'); ?>
+<?php require_once('../../../private/initialize.php'); ?>
 
 <?php
 
-
-
-$id = $_GET['id'] ?? false;
-
-if(!$id) {
-  redirect_to('bird.php');
-}
-
-// Find bird using ID
+$id = $_GET['id'] ?? '1';
 
 $bird = Bird::find_by_id($id);
 
 ?>
 
-<?php $page_title = 'Details'; ?>
-<?php include(SHARED_PATH . '/public_header.php'); ?>
+<?php $page_title = 'Show Bird: ' . h($bird->common_name); ?>
+<?php include(SHARED_PATH . '/staff_header.php'); ?>
 
-<div id="main">
+<div id="content">
 
-  <a href="bird.php">Back to Inventory</a>
+  <a class="back-link" href="<?php echo url_for('/staff/birds/index.php'); ?>">&laquo; Back to List</a>
 
-  <div id="page">
+  <div class="Bird show">
+    
+    <h1>Bird: <?php echo h($bird->common_name); ?></h1>
 
-    <div class="detail">
+    <div class="attributes">
       <dl>
         <dt>Common Name</dt>
         <dd><?php echo h($bird->common_name); ?></dd>
@@ -55,5 +49,3 @@ $bird = Bird::find_by_id($id);
   </div>
 
 </div>
-
-<?php include(SHARED_PATH . '/public_footer.php'); ?>
