@@ -21,15 +21,7 @@ if(!isset($bird)) {
   <dd><input type="text" name="bird[food]" value="<?php echo h($bird->food); ?>"></dd>
 </dl>
 
-<dl>
-  <dt>Nest Placement</dt>
-  <dd><input type="text" name="bird[nest_placement]" value="<?php echo h($bird->nest_placement); ?>"></dd>
-</dl>
 
-<dl>
-  <dt>Behavior</dt>
-  <dd><input type="text" name="bird[behavior]" value="<?php echo h($bird->behavior); ?>"></dd>
-</dl>
 
 <dl>
   <dt>Backyard Tips</dt>

@@ -32,14 +32,14 @@ $bird = Bird::find_by_id($id);
         <dt>Food</dt>
         <dd><?php echo h($bird->food); ?></dd>
       </dl>
-      <dl>
+      <!-- <dl>
         <dt>Nest Placement</dt>
-        <dd><?php echo h($bird->nest_placement); ?></dd>
+        <dd></dd>
       </dl>
       <dl>
         <dt>Behavior</dt>
-        <dd><?php echo h($bird->behavior); ?></dd>
-      </dl>
+        <dd></dd>
+      </dl> -->
       <dl>
         <dt>Backyard Tips</dt>
         <dd><?php echo h($bird->backyard_tips); ?></dd>
