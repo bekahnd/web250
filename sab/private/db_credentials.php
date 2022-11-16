@@ -3,7 +3,7 @@
 // Local
 define("DB_SERVER", "localhost");
 define("DB_USER", "webuser");
-define("DB_PASS", "P@ssword12345");
+define("DB_PASS", "password");
 define("DB_NAME", "sabird");
 
 // SiteGround
