@@ -16,15 +16,6 @@
       <h1>SA Birds Admin Area</h1>
     </header>
 
-    <nav>
-      <ul>
-        <?php if($session->is_logged_in()) { ?>
-        <li><a href="<?php echo url_for('/users/index.php'); ?>">Menu</a></li>
-        <li><a href="<?php echo url_for('/logout.php'); ?>">Logout</a></li>
-        <?php } ?>
-      </ul>
-    </nav>
-
 
 
     <?php echo display_session_message(); ?>

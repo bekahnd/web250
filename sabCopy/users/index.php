@@ -1,8 +1,5 @@
 <?php 
-  require_once('../private/initialize.php'); 
-  
-  require_login();
-
+  require_once('../private/initialize.php');   
   $users = User::find_all();
   $page_title = 'Members'; 
   include(SHARED_PATH . '/user_header.php'); 
