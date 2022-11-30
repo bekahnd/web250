@@ -3,7 +3,10 @@
 <?php 
 $birds = Bird::find_all(); 
 $page_title = 'Birds'; 
+
 include(SHARED_PATH . '/public_header.php'); 
+
+
 
 ?>
 

@@ -4,20 +4,20 @@ class Bird extends DatabaseObject {
 
   // ----- START OF ACTIVE RECORD CODE ------
   static protected $database;
-  static protected $db_columns = ['id', 'common_name', 'habitat', 'food', 'conservation_id', 'backyard_tips'];
+  static protected $db_columns = ['id', 'common_name', 'habitat', 'food', 'backyard_tips'];
 
   public $id;
   public $common_name;
   public $habitat;
   public $food;
-  public $conervation_id;
+  //public $conervation_id;
   public $backyard_tips;
 
   public function __construct($args=[]) {
     $this->common_name = $args['common_name'] ?? '';
     $this->habitat = $args['habitat'] ?? '';
     $this->food = $args['food'] ?? '';
-    $this->conservation_id = $args['conservation_id'] ?? '';
+    // $this->conservation_id = $args['conservation_id'] ?? '';
     $this->backyard_tips = $args['backyard_tips'] ?? '';
   }
 
@@ -72,6 +72,7 @@ class Bird extends DatabaseObject {
 
   // TODO: Walkthrough
   public function update() {
+    $this->validate();
     $attributes = $this->sanitized_attributes();
     $attribute_pairs = [];
     foreach($attributes as $key => $value) {
@@ -80,12 +81,12 @@ class Bird extends DatabaseObject {
 
    // print_r($attribute_pairs); exit;
 
-    $sql = "UPDATE bird SET ";
+    $sql = "UPDATE birds SET ";
     $sql .= join(', ', $attribute_pairs);
     $sql .= " WHERE id='" . self::$database->escape_string($this->id) . "' ";
     $sql .= "LIMIT 1";
 
-echo $sql; exit;
+//echo $sql; exit;
 
     $result = self::$database->query($sql);
     return $result;

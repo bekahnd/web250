@@ -1,7 +1,7 @@
 <?php 
   require_once('../private/initialize.php'); 
   
-  require_login();
+  //require_login();
 
   $users = User::find_all();
   $page_title = 'Members'; 
