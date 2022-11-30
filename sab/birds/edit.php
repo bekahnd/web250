@@ -2,6 +2,8 @@
 
 require_once('../private/initialize.php');
 
+require_login();
+
 if(!isset($_GET['id'])) {
   redirect_to(url_for('/birds/index.php'));
 }
@@ -21,7 +23,7 @@ if(is_post_request()) {
   $result = $bird->save();
 
   if($result === true) {
-    $_SESSION['message'] = 'The bird was updated successfully.';
+    $session->message('The bird was updated successfully.');
     redirect_to(url_for('/birds/show.php?id=' . $id));
   } else {
     //show errors

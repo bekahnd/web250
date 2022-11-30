@@ -2,6 +2,8 @@
 
 require_once('../private/initialize.php');
 
+require_login();
+
 if(is_post_request()) {
 
   // Create record using post parameters
@@ -11,7 +13,7 @@ if(is_post_request()) {
 
   if($result === true) {
     $new_id = $user->id;
-    $_SESSION['message'] = 'The user was created successfully.';
+    $session->message('The user was created successfully.');
     redirect_to(url_for('users/show.php?id=' . $new_id));
   } else {
     // show errors

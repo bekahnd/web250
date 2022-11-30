@@ -2,11 +2,12 @@
 
 require_once('../private/initialize.php');
 
+require_login();
+
 if(!isset($_GET['id'])) {
   redirect_to(url_for('/birds/index.php'));
 }
 $id = $_GET['id'];
-
 $bird = Bird::find_by_id($id);
 if($bird == false) {
   redirect_to(url_for('/birds/index.php'));
@@ -16,8 +17,7 @@ if(is_post_request()) {
 
   //Delete Bird
   $result = $bird->delete();
-
-  $_SESSION['message'] = 'The bird was deleted successfully.';
+  $session->message('The bird was deleted successfully.');
   redirect_to(url_for('/birds/index.php'));
 
 } else {
@@ -31,7 +31,7 @@ if(is_post_request()) {
 
 <div id="content">
 
-  <a class="back-link" href="<?php echo url_for('/staff/birds/index.php'); ?>">&laquo; Back to List</a>
+  <a class="back-link" href="<?php echo url_for('/birds/index.php'); ?>">&laquo; Back to List</a>
 
   <div class="bird delete">
     <h1>Delete Bird</h1>

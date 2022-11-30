@@ -5,6 +5,8 @@ class Session {
 
     public $username;
     private $last_login;
+    
+    public const MAX_LOGIN_AGE = 60*60*24;
 
     public function __construct() {
         session_start();
@@ -15,7 +17,7 @@ class Session {
         if($user) {
             // prevent session fixation attacks
             session_regenerate_id();
-            $this->user_id = $_SESSION['admin_id'] = $user->id;
+            $this->user_id = $_SESSION['user_id'] = $user->id;
             $this->username = $_SESSION['username'] = $user->username;
             $this->last_login = $_SESSION['last_login'] = time();
         } return true;
@@ -23,7 +25,9 @@ class Session {
 
     public function is_logged_in() {
         //echo "user: " . $this->user_id; exit;
-        return isset($this->user_id);
+        //return isset($this->user_id);
+        return isset($this->user_id) && $this->last_login_is_recent();
+
     }
 
     public function logout() {
@@ -42,6 +46,29 @@ class Session {
             $this->username = $_SESSION['username'];
             $this->last_login = $_SESSION['last_login'];
         }
+    }
+
+    private function last_login_is_recent() {
+      if(!isset($this->last_login)) {
+        return false;
+      } elseif($this->last_login + self::MAX_LOGIN_AGE < time()) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    public function message($msg="") {
+      if(!empty($msg)) {
+        $_SESSION['message'] = $msg;
+        return true;
+      } else {
+        return $_SESSION['message'] ?? '';
+      }
+    }
+
+    public function clear_message() {
+      unset($_SESSION['message']);
     }
 
 }
